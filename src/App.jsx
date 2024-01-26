@@ -1,5 +1,4 @@
 import Perfil from "./components/Perfil";
-// import Formulario from "./components/Formulario";
 import ReposList from "./components/ReposList";
 import { useState } from "react";
 
@@ -9,7 +8,10 @@ function App() {
 
   return (
     <>
-      <input type="text" placeholder="Digite o usuário do GitHub" onBlur={(e) => setNomeUsuario(e.target.value)} />
+      <div className="formulario container">
+        <label htmlFor="">Digite um usuário do GitHub válido</label>
+        <input type="text" placeholder="Digite o usuário do GitHub" onBlur={(e) => setNomeUsuario(e.target.value)} />
+      </div>
       {nomeUsuario.length > 4 && (
         <>
           <Perfil nomeUsuario={nomeUsuario} />

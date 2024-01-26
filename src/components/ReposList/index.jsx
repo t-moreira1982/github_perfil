@@ -16,6 +16,10 @@ const ReposList = ({ nomeUsuario }) => {
                     setRepos(resJson);
                 }, 2000);
             })
+            .catch(e => {
+                setEstaCarregando(false);
+                console.error(e);
+            })
     }, [nomeUsuario]);
 
 
@@ -23,6 +27,8 @@ const ReposList = ({ nomeUsuario }) => {
         <div className="container">
             {estaCarregando ? (
                 <h1>Carregando...</h1>
+            ) : (repos.length === 0) ? (
+                <h1>Usuário não encontrado. Favor Digitar um usuário válido.</h1>
             ) : (
                 <ul className={styles.list}>
                     {repos.map(({ id, name, language, html_url }) => (
@@ -40,6 +46,8 @@ const ReposList = ({ nomeUsuario }) => {
                     ))}
                 </ul>
             )}
+
+
         </div>
     )
 }
